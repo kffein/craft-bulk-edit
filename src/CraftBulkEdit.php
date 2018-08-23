@@ -2,14 +2,13 @@
 /**
  * Craft Bulk Edit plugin for Craft CMS 3.x
  *
- * Craft Bulk Edit
+ * Bulk Edit
  *
  * @link      www.kffein.com
  * @copyright Copyright (c) 2018 KFFEIN
  */
 
 namespace kffein\craftbulkedit;
-
 
 use kffein\craftbulkedit\fields\craftbulkeditField as craftbulkeditFieldField;
 

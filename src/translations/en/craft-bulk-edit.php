@@ -1,6 +1,6 @@
 <?php
 /**
- * Bulk Edit plugin for Craft CMS 3.x
+ * Craft Bulk Edit plugin for Craft CMS 3.x
  *
  * Bulk Edit
  *
@@ -14,6 +14,6 @@
  * @since     1.0.1
  */
 return [
-    'Bulk Edit plugin loaded' => 'Bulk Edit plugin chargé',
-    'Channel' => 'Canal'
+    'Craft Bulk Edit plugin loaded' => 'Craft Bulk Edit plugin loaded',
+    'Channel' => 'Channel'
 ];

@@ -30,11 +30,11 @@
     }
   },
   "extra": {
-    "name": "Bulk Edit",
+    "name": "Craft Bulk Edit",
     "handle": "craft-bulk-edit",
     "hasCpSettings": false,
     "hasCpSection": false,
     "changelogUrl": "https://raw.githubusercontent.com/kffein/craft-bulk-edit/master/CHANGELOG.md",
-    "class": "kffein\\craftbulkedit\\craftbulkedit"
+    "class": "kffein\\craftbulkedit\\CraftBulkEdit"
   }
 }
