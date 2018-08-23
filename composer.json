@@ -26,15 +26,15 @@
   },
   "autoload": {
     "psr-4": {
-      "kffein\\craftstatus\\": "src/"
+      "kffein\\craftbulkedit\\": "src/"
     }
   },
   "extra": {
-    "name": "Craft Status",
+    "name": "Bulk Edit",
     "handle": "craft-bulk-edit",
     "hasCpSettings": false,
     "hasCpSection": false,
     "changelogUrl": "https://raw.githubusercontent.com/kffein/craft-bulk-edit/master/CHANGELOG.md",
-    "class": "kffein\\craftstatus\\CraftStatus"
+    "class": "kffein\\craftbulkedit\\craftbulkedit"
   }
 }

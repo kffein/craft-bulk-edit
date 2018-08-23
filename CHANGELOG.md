@@ -1,4 +1,4 @@
-# Craft Status Changelog
+# Craft Bulk Edit Changelog
 
 All notable changes to this project will be documented in this file.
 

@@ -1,8 +1,8 @@
 <?php
 /**
- * Craft Status plugin for Craft CMS 3.x
+ * Bulk Edit plugin for Craft CMS 3.x
  *
- * Custom status
+ * Bulk Edit
  *
  * @link      www.kffein.com
  * @copyright Copyright (c) 2018 KFFEIN
@@ -10,10 +10,10 @@
 
 /**
  * @author    KFFEIN
- * @package   CraftStatus
+ * @package   craftbulkedit
  * @since     1.0.1
  */
 return [
-    'Craft Status plugin loaded' => 'Craft Status plugin loaded',
+    'Bulk Edit plugin loaded' => 'Bulk Edit plugin loaded',
     'Channel' => 'Channel'
 ];

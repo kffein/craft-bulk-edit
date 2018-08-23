@@ -5,7 +5,7 @@
  * @license https://craftcms.github.io/license/
  */
 
-namespace kffein\craftstatus\actions;
+namespace kffein\craftbulkedit\actions;
 
 use Craft;
 use craft\base\Element;
@@ -13,12 +13,12 @@ use craft\base\ElementAction;
 use craft\elements\db\ElementQueryInterface;
 
 /**
- * SetStatus represents a Set Status element action.
+ * Edit Dropdown action to change value of a given dropdown field
  *
  * @author Pixel & Tonic, Inc. <support@pixelandtonic.com>
  * @since 3.0
  */
-class CustomStatus extends ElementAction
+class EditDropdown extends ElementAction
 {
     // Properties
     // =========================================================================

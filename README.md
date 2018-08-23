@@ -1,6 +1,6 @@
-# Craft Status plugin for Craft CMS 3.x
+# Craft Bulk Edit plugin for Craft CMS 3.x
 
-Custom status
+Craft Bulk Edit
 
 ![Screenshot](resources/img/plugin-logo.png)
 
@@ -18,13 +18,13 @@ To install the plugin, follow these instructions.
 
 2. Then tell Composer to load the plugin:
 
-        composer require kffein/craft-status
+        composer require kffein/craft-bulk-edit
 
-3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Craft Status.
+3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Craft Bulk Edit.
 
-## Craft Status Overview
+## Craft Bulk Edit Overview
 
-Custom status in channels to bulk edit a field on each entry
+Craft Bulk Edit in channels to Craft bulk edit a field on each entry
 
 !!! AT VER. 1.0.1 ONLY USABLE WITH PROJECT : SHINGRIX !!!
 

@@ -1,17 +1,17 @@
 <?php
 /**
- * Craft Status plugin for Craft CMS 3.x
+ * Craft Bulk Edit plugin for Craft CMS 3.x
  *
- * Custom status
+ * Craft Bulk Edit
  *
  * @link      www.kffein.com
  * @copyright Copyright (c) 2018 KFFEIN
  */
 
-namespace kffein\craftstatus;
+namespace kffein\craftbulkedit;
 
-use kffein\craftstatus\actions\CustomStatus;
-use kffein\craftstatus\fields\CraftStatusField as CraftStatusFieldField;
+
+use kffein\craftbulkedit\fields\craftbulkeditField as craftbulkeditFieldField;
 
 use Craft;
 use craft\base\Element;
@@ -26,20 +26,20 @@ use craft\events\RegisterElementActionsEvent;
 use yii\base\Event;
 
 /**
- * Class CraftStatus
+ * Class craftbulkedit
  *
  * @author    KFFEIN
- * @package   CraftStatus
+ * @package   craftbulkedit
  * @since     1.0.1
  *
  */
-class CraftStatus extends Plugin
+class craftbulkedit extends Plugin
 {
     // Static Properties
     // =========================================================================
 
     /**
-     * @var CraftStatus
+     * @var craftbulkedit
      */
     public static $plugin;
 
@@ -65,12 +65,11 @@ class CraftStatus extends Plugin
         Event::on(Entry::class, Element::EVENT_REGISTER_ACTIONS, function(RegisterElementActionsEvent $event) {
             $settings = $this->getSettings();
             var_dump($settings);die;
-            $event->actions[] = new CustomStatus();
         });
 
         Craft::info(
             Craft::t(
-                'craft-status',
+                'craft-bulk-edit',
                 '{name} plugin loaded',
                 ['name' => $this->name]
             ),

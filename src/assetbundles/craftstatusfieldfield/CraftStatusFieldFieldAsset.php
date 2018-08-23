@@ -1,14 +1,14 @@
 <?php
 /**
- * Craft Status plugin for Craft CMS 3.x
+ * Craft Bulk Edit plugin for Craft CMS 3.x
  *
- * Custom status
+ * Craft Bulk Edit
  *
  * @link      www.kffein.com
  * @copyright Copyright (c) 2018 KFFEIN
  */
 
-namespace kffein\craftstatus\assetbundles\craftstatusfieldfield;
+namespace kffein\craftbulkedit\assetbundles\craftbulkeditfieldfield;
 
 use Craft;
 use craft\web\AssetBundle;
@@ -16,10 +16,10 @@ use craft\web\assets\cp\CpAsset;
 
 /**
  * @author    KFFEIN
- * @package   CraftStatus
+ * @package   craftbulkedit
  * @since     1.0.1
  */
-class CraftStatusFieldFieldAsset extends AssetBundle
+class craftbulkeditFieldFieldAsset extends AssetBundle
 {
     // Public Methods
     // =========================================================================
@@ -29,18 +29,18 @@ class CraftStatusFieldFieldAsset extends AssetBundle
      */
     public function init()
     {
-        $this->sourcePath = "@kffein/craftstatus/assetbundles/craftstatusfieldfield/dist";
+        $this->sourcePath = "@kffein/craftbulkedit/assetbundles/craftbulkeditfieldfield/dist";
 
         $this->depends = [
             CpAsset::class,
         ];
 
         $this->js = [
-            'js/CraftStatusField.js',
+            'js/craftbulkeditField.js',
         ];
 
         $this->css = [
-            'css/CraftStatusField.css',
+            'css/craftbulkeditField.css',
         ];
 
         parent::init();

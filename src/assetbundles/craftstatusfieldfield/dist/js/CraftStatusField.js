@@ -1,18 +1,18 @@
 /**
- * Craft Status plugin for Craft CMS
+ * Craft Bulk Edit plugin for Craft CMS
  *
- * CraftStatusField Field JS
+ * craftbulkeditField Field JS
  *
  * @author    KFFEIN
  * @copyright Copyright (c) 2018 KFFEIN
  * @link      www.kffein.com
- * @package   CraftStatus
- * @since     1.0.1CraftStatusCraftStatusField
+ * @package   craftbulkedit
+ * @since     1.0.1craftbulkeditcraftbulkeditField
  */
 
  ;(function ( $, window, document, undefined ) {
 
-    var pluginName = "CraftStatusCraftStatusField",
+    var pluginName = "craftbulkeditcraftbulkeditField",
         defaults = {
         };
 
