@@ -1,0 +1,40 @@
+{
+  "name": "kffein/craft-bulk-edit",
+  "description": "Bulk edit",
+  "type": "craft-plugin",
+  "version": "1.0.1",
+  "keywords": [
+    "craft",
+    "cms",
+    "craftcms",
+    "craft-plugin",
+    "bulk edit"
+  ],
+  "support": {
+    "docs": "https://github.com/kffein/craft-bulk-edit/blob/master/README.md",
+    "issues": "https://github.com/kffein/craft-bulk-edit/issues"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "KFFEIN",
+      "homepage": "www.kffein.com"
+    }
+  ],
+  "require": {
+    "craftcms/cms": "^3.0.0-RC1"
+  },
+  "autoload": {
+    "psr-4": {
+      "kffein\\craftstatus\\": "src/"
+    }
+  },
+  "extra": {
+    "name": "Craft Status",
+    "handle": "craft-bulk-edit",
+    "hasCpSettings": false,
+    "hasCpSection": false,
+    "changelogUrl": "https://raw.githubusercontent.com/kffein/craft-bulk-edit/master/CHANGELOG.md",
+    "class": "kffein\\craftstatus\\CraftStatus"
+  }
+}
