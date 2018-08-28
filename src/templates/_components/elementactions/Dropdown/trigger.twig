@@ -1,0 +1,8 @@
+<div class="btn menubtn" style="overflow:visible">{{ label }}</div>
+<div class="menu">
+    <ul>
+    	{% for option in options %}
+	        <li><a class="bulkEditSubmit" data-value="{{option.value}}" data-handle="{{handle}}">{{ option.label }}</a></li>
+    	{% endfor %}
+    </ul>
+</div>

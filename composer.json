@@ -2,7 +2,7 @@
   "name": "kffein/craft-bulk-edit",
   "description": "Bulk edit",
   "type": "craft-plugin",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "keywords": [
     "craft",
     "cms",

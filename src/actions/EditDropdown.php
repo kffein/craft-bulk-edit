@@ -1,8 +1,9 @@
 <?php
 /**
- * @link https://craftcms.com/
- * @copyright Copyright (c) Pixel & Tonic, Inc.
- * @license https://craftcms.github.io/license/
+ * Craft Bulk Edit for Craft CMS 3.x
+ *
+ * @link      https://kffein.com
+ * @copyright Copyright (c) 2018 KFFEIN
  */
 
 namespace kffein\craftbulkedit\actions;
@@ -15,28 +16,53 @@ use craft\elements\db\ElementQueryInterface;
 /**
  * Edit Dropdown action to change value of a given dropdown field
  *
- * @author Pixel & Tonic, Inc. <support@pixelandtonic.com>
- * @since 3.0
+ * @author KFFEIN
+ * @since 1.0.2
  */
 class EditDropdown extends ElementAction
 {
     // Properties
     // =========================================================================
 
-    /**
-     * @var string|null The status elements should be set to
+    /*
+     * Name of the field
      */
-    public $status;
+    public $title;
+
+    /*
+     * Handle of the field
+     */
+    public $handle;
+
+    /*
+     * Array of options from the field
+     *
+     */
+    public $options;
+
+    /*
+     * Value of the triggered action
+     *
+     */
+    public $value;
 
     // Public Methods
     // =========================================================================
 
+    /*
+     * Create a dropdown edit class with the field's info, title, handle and options
+     */
+    public function __construct(string $_title, string $_handle, array $_options){
+        $this->title = $_title;
+        $this->handle = $_handle;
+        $this->options = $_options;
+    }
     /**
      * @inheritdoc
      */
     public function getTriggerLabel(): string
     {
-        return Craft::t('craft-status', 'Modify');
+        return $this->title;
     }
 
     // Public Methods
@@ -48,7 +74,7 @@ class EditDropdown extends ElementAction
     public function rules()
     {
         $rules = parent::rules();
-        $rules[] = [['status'], 'required'];
+        $rules[] = [['title'], 'required'];
 
         return $rules;
     }
@@ -58,10 +84,7 @@ class EditDropdown extends ElementAction
      */
     public function getTriggerHtml()
     {
-        $status = Craft::$app->fields->getFieldByHandle('comment_status');
-        if($status !== null && !empty($status->options)){
-            return Craft::$app->getView()->renderTemplate('craft-status/_components/elementactions/CustomStatus/trigger',['options'=>$status->options]);
-        }
+        return Craft::$app->getView()->renderTemplate('craft-bulk-edit/_components/elementactions/Dropdown/trigger',['label'=>$this->title,'handle'=>$this->handle,'options'=>$this->options]);
     }
     /**
      * Performs the action on any elements that match the given criteria.
@@ -79,36 +102,36 @@ class EditDropdown extends ElementAction
 
         foreach ($elements as $element) {
             // Skip if there's nothing to change
-            if (isset($element->comment_status) && $element->comment_status->value == $this->status ) {
+            if (isset($element->{$this->handle}) && $element->{$this->handle}->value == $this->value ) {
                 continue;
             }
 
-            $element->comment_status->value = $this->status;
+            $element->{$this->handle}->value = $this->value;
 
             if ($elementsService->saveElement($element) === false) {
                 // Validation error
                 $failCount++;
             }
         }
-
+        
         // Did all of them fail?
         if ($failCount === count($elements)) {
             if (count($elements) === 1) {
-                $this->setMessage(Craft::t('app', 'Could not update status due to a validation error.'));
+                $this->setMessage(Craft::t('app', "Could not update $this->title due to a validation error."));
             } else {
-                $this->setMessage(Craft::t('app', 'Could not update statuses due to validation errors.'));
+                $this->setMessage(Craft::t('app', "Could not update all $this->title due to validation errors."));
             }
 
             return false;
         }
 
         if ($failCount !== 0) {
-            $this->setMessage(Craft::t('app', 'Status updated, with some failures due to validation errors.'));
+            $this->setMessage(Craft::t('app', '$this->title updated, with some failures due to validation errors.'));
         } else {
             if (count($elements) === 1) {
-                $this->setMessage(Craft::t('app', 'Status updated.'));
+                $this->setMessage(Craft::t('app', "$this->title updated."));
             } else {
-                $this->setMessage(Craft::t('app', 'Statuses updated.'));
+                $this->setMessage(Craft::t('app', "All $this->title updated."));
             }
         }
 
