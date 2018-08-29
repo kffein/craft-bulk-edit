@@ -33,5 +33,3 @@ To install the plugin, follow these instructions.
 				)
 			)
 		);
-
-## Craft Bulk Edit Overview
