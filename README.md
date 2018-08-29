@@ -22,10 +22,16 @@ To install the plugin, follow these instructions.
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Craft Bulk Edit.
 
+4. Create a craft-bulk-edit.php file in config/ and return an array of sections and field handle e.g. :
+
+		<?php
+		return array(
+			'addEditFieldAction'=> array(
+				'firstSection' => (
+					'radioButtonField',
+					'DropdownField'
+				)
+			)
+		);
+
 ## Craft Bulk Edit Overview
-
-Bulk Edit in channels to bulk edit a field on each entry
-
-!!! AT VER. 1.0.1 ONLY USABLE WITH PROJECT : SHINGRIX !!!
-
-Brought to you by [KFFEIN](www.kffein.com)

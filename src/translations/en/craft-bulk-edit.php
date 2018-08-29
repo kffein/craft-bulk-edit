@@ -15,5 +15,4 @@
  */
 return [
     'Craft Bulk Edit plugin loaded' => 'Craft Bulk Edit plugin loaded',
-    'Channel' => 'Channel'
 ];

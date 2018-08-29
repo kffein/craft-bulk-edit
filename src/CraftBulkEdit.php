@@ -12,6 +12,7 @@ namespace kffein\craftbulkedit;
 
 use kffein\craftbulkedit\models\SettingsModel;
 use kffein\craftbulkedit\actions\EditDropdown;
+use kffein\craftbulkedit\actions\EditRadioButton;
 use kffein\craftbulkedit\assetbundles\craftbulkedit\CraftBulkEditAsset;
 
 use Craft;
@@ -53,7 +54,7 @@ class CraftBulkEdit extends Plugin
     /**
      * @var string
      */
-    public $schemaVersion = '1.0.2';
+    public $schemaVersion = '1.0.3';
 
     // Public Methods
     // =========================================================================
@@ -93,6 +94,9 @@ class CraftBulkEdit extends Plugin
                         switch ($type) {
                             case 'craft\fields\Dropdown':
                                 $event->actions[] = new EditDropdown($field->name,$field->handle,$field->options);
+                                break;
+                            case 'craft\fields\RadioButtons':
+                                $event->actions[] = new EditRadioButton($field->name,$field->handle,$field->options);
                                 break;
                             default:
                                 break;

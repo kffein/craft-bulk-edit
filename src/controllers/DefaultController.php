@@ -11,6 +11,7 @@ namespace kffein\craftbulkedit\controllers;
 use Craft;
 use craft\elements\db\ElementQueryInterface;
 use craft\web\Controller;
+use craft\helpers\ElementHelper;
 
 /**
  * Default controller which capture bulk edit action
@@ -23,6 +24,9 @@ class DefaultController extends Controller
     // Properties
     // =========================================================================
     private $_elementType;
+    private $_context;
+    private $_sourceKey;
+    private $_source;
     /**
      * @var    bool|array Allows anonymous access to this controller's actions.
      *         The actions must be in 'kebab-case'
@@ -36,6 +40,9 @@ class DefaultController extends Controller
         parent::init();
 
         $this->_elementType = Craft::$app->getRequest()->getRequiredParam('elementType');
+        $this->_context = Craft::$app->getRequest()->getParam('context');
+        $this->_sourceKey = Craft::$app->getRequest()->getParam('source');
+        $this->_source = ElementHelper::findSource($this->_elementType, $this->_sourceKey, $this->_context);
     }
 
     public function actionPerformEditAction(){
@@ -51,6 +58,7 @@ class DefaultController extends Controller
         if (!empty($this->_listOfAvailableAction())) {
             /** @var ElementAction $availableAction */
             foreach ($this->_listOfAvailableAction() as $availableAction) {
+                // Select the action form the handle recieve by the trigger
                 if (isset($availableAction->handle) && $availableAction->handle == $actionHandle ) {
                     $action = $availableAction;
                     break;
@@ -110,6 +118,9 @@ class DefaultController extends Controller
         return $this->asJson($responseData);
     }
 
+    /*
+     * Get by source and element type all the actions class registered
+     */
     private function _listOfAvailableAction(){
         if (Craft::$app->getRequest()->isMobileBrowser()) {
             return null;
@@ -121,6 +132,9 @@ class DefaultController extends Controller
         return array_values($actions);
     }
 
+    /*
+     * @inheritDoc
+     */
     private function _elementQuery(): ElementQueryInterface
     {
         /** @var string|ElementInterface $elementType */
