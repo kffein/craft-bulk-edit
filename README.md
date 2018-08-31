@@ -27,7 +27,7 @@ To install the plugin, follow these instructions.
 		<?php
 		return array(
 			'addEditFieldAction'=> array(
-				'firstSection' => (
+				'firstSection' => array(
 					'radioButtonField',
 					'DropdownField'
 				)
