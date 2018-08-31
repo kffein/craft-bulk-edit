@@ -1,7 +1,5 @@
 # Craft Bulk Edit plugin for Craft CMS 3.x
 
-Bulk Edit
-
 ![Screenshot](resources/img/plugin-logo.png)
 
 ## Requirements
@@ -27,9 +25,13 @@ To install the plugin, follow these instructions.
 		<?php
 		return array(
 			'addEditFieldAction'=> array(
-				'firstSection' => array(
-					'radioButtonField',
-					'DropdownField'
+				'sectionTwo' => array(
+					'firstDopdown',
+					'firstRadioButton'
 				)
 			)
 		);
+
+## Preview
+
+![Screenshot](resources/img/preview.png)
