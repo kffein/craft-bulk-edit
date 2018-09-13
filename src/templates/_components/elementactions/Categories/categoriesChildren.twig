@@ -1,0 +1,6 @@
+{% for child in parent.children if child.enabled %}
+	<li style="text-indent: {{indent}}%"><a class="bulkEditSubmit" data-handle="{{handle}}" data-value={{child.slug}}>{{ child.title }}</a></li>
+	<ul>
+		{% include _self with {'parent':child,'indent':indent+5} %}
+	</ul>
+{% endfor %}

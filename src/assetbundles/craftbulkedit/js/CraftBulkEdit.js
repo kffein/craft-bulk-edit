@@ -19,6 +19,7 @@ Craft.BulkEditPlugin = Garnish.Base.extend({
         var viewParams = elementIndex.getViewParams()
 
         // Copy param from the view and add custom values for the controller
+        console.log(element.dataset)
         var data = viewParams
         data.actionHandle = element.dataset.handle
         data.value = element.dataset.value

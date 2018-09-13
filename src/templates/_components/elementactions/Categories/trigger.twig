@@ -1,0 +1,11 @@
+<div class="btn menubtn" style="overflow:visible;">{{ label }}</div>
+<div class="menu">
+    <ul>
+    	{% for parent in options if parent.enabled %}
+	        <li><a class="bulkEditSubmit" data-handle="{{handle}}" data-value={{parent.slug}}>{{ parent.title }}</a></li>
+	        <ul>
+				{% include 'craft-bulk-edit/_components/elementactions/Categories/categoriesChildren' with {'parent':parent,'indent':'5'} %}
+	        </ul>
+    	{% endfor %}
+    </ul>
+</div>

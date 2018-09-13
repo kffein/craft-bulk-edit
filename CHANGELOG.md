@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.0.4 - 2018-09-12
+### Added
+- Now support Category ( will select only 1 even if the field has no limit )
+
 ## 1.0.3 - 2018-08-28
 ### Added
 - Update actions to work with craft behavior (keep the entry selected after call)

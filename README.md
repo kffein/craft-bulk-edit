@@ -27,3 +27,9 @@ To install the plugin, follow these instructions.
 ## Preview
 
 ![Screenshot](resources/img/preview.png)
+
+## Supported Field
+
+- Dropdown
+- Radio Button
+- Categories
