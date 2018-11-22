@@ -15,14 +15,14 @@ To install the plugin, follow these instructions.
 2. Create a craft-bulk-edit.php file in config/ and return an array of sections and field handle e.g. :
 
 		<?php
-		return array(
-			'addEditFieldAction'=> array(
-				'sectionTwo' => array(
-					'firstDopdown',
-					'firstRadioButton'
-				)
-			)
-		);
+		return [
+			'addEditFieldAction' => [
+				'sectionTwo' => [
+						'firstDopdown',
+						'firstRadioButton'
+				]
+			]
+		];
 
 ## Preview
 
