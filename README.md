@@ -1,6 +1,6 @@
 # Craft Bulk Edit plugin for Craft CMS 3.x
 
-![Screenshot](resources/img/plugin-logo.png)
+![Screenshot](resources/img/header.png)
 
 ## Requirements
 
@@ -8,21 +8,30 @@ This plugin requires Craft CMS 3.0.0-beta.23 or later.
 
 ## Installation
 
-To install the plugin, follow these instructions.
+To install Craft Bulk Edit, follow these steps:
 
-1. In the Control Panel, go to Settings → Plugins and click the “Install” button for Craft Bulk Edit.
+1. Install with Composer via composer require kffein/craft-bulk-edit from your project directory
+2. Install plugin in the Craft Control Panel under Settings > Plugins
 
-2. Create a craft-bulk-edit.php file in config/ and return an array of sections and field handle e.g. :
+Or
 
-		<?php
-		return [
-			'addEditFieldAction' => [
-				'sectionTwo' => [
-						'firstDopdown',
-						'firstRadioButton'
-				]
-			]
-		];
+You can also install Craft Bulk Edit via the Plugin Store in the Craft AdminCP.
+
+## Configuration
+
+Create a craft-bulk-edit.php file in config/ directory and return an array of sections and fields handle e.g. :
+
+```php
+<?php
+return [
+ 'addEditFieldAction' => [
+    'sectionTwo' => [
+      'firstDopdown',
+      'firstRadioButton'
+    ]
+  ]
+];
+```
 
 ## Preview
 

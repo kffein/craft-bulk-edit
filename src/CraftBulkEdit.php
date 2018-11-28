@@ -15,20 +15,12 @@ use kffein\craftbulkedit\actions\EditDropdown;
 use kffein\craftbulkedit\actions\EditRadioButton;
 use kffein\craftbulkedit\actions\EditCategory;
 use kffein\craftbulkedit\assetbundles\craftbulkedit\CraftBulkEditAsset;
-
 use Craft;
 use craft\base\Element;
 use craft\base\Plugin;
 use craft\elements\Entry;
 use craft\services\Fields;
-use craft\services\Plugins;
-use craft\services\Elements as SeviceElements;
-use craft\events\PluginEvent;
-use craft\events\ElementActionEvent;
-use craft\events\RegisterComponentTypesEvent;
 use craft\events\RegisterElementActionsEvent;
-use craft\web\View;
-
 use yii\base\Event;
 
 /**
@@ -67,10 +59,10 @@ class CraftBulkEdit extends Plugin
     {
         parent::init();
         self::$plugin = $this;
-        
-        Event::on(Entry::class, Element::EVENT_REGISTER_ACTIONS, function(RegisterElementActionsEvent $event){
+
+        Event::on(Entry::class, Element::EVENT_REGISTER_ACTIONS, function (RegisterElementActionsEvent $event) {
             Craft::$app->getView()->registerAssetBundle(CraftBulkEditAsset::class);
-            Craft::$app->getView()->registerJs("new Craft.BulkEditPlugin()");
+            Craft::$app->getView()->registerJs('new Craft.BulkEditPlugin()');
 
             // Get settings from config/
             $settings = $this->getSettings();
@@ -81,28 +73,26 @@ class CraftBulkEdit extends Plugin
                 $section = Craft::$app->sections->getSectionByHandle($sectionHandle);
 
                 // Add the element list action only if it's a section and it's a valid existant section
-                if(!empty($section) && strpos($event->source,'section')!==false && strpos($event->source, $section->id) !==false ){
-
+                if (!empty($section) && strpos($event->source, 'section') !== false && strpos($event->source, $section->id) !== false) {
                     // Loop through the settings fields list associated to the section
                     foreach ($fields as $fieldHandle) {
-
                         // Get the field object
                         $field = Craft::$app->fields->getFieldByHandle($fieldHandle);
                         // Get the field class
                         $type = get_class($field);
-                        if(empty($field)){
+                        if (empty($field)) {
                             continue;
                         }
                         // Add an action  by passing argument to his constructor based on his type
                         switch ($type) {
                             case 'craft\fields\Dropdown':
-                                $event->actions[] = new EditDropdown($field->name,$field->handle,$field->options);
+                                $event->actions[] = new EditDropdown($field->name, $field->handle, $field->options);
                                 break;
                             case 'craft\fields\RadioButtons':
-                                $event->actions[] = new EditRadioButton($field->name,$field->handle,$field->options);
+                                $event->actions[] = new EditRadioButton($field->name, $field->handle, $field->options);
                                 break;
                             case 'craft\fields\Categories':
-                                $event->actions[] = new EditCategory($field->name,$field->handle,$field->source);
+                                $event->actions[] = new EditCategory($field->name, $field->handle, $field->source);
                                 break;
                             default:
                                 break;
