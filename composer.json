@@ -14,11 +14,11 @@
     "docs": "https://github.com/kffein/craft-bulk-edit/blob/master/README.md",
     "issues": "https://github.com/kffein/craft-bulk-edit/issues"
   },
-  "license": "CRAFT",
+  "license": "MIT",
   "authors": [
     {
-      "name": "KFFEIN",
-      "homepage": "www.kffein.com"
+      "name": "Kffein",
+      "homepage": "https://kffein.com"
     }
   ],
   "require": {
