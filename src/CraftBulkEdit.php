@@ -73,30 +73,45 @@ class CraftBulkEdit extends Plugin
                 $section = Craft::$app->sections->getSectionByHandle($sectionHandle);
 
                 // Add the element list action only if it's a section and it's a valid existant section
-                if (!empty($section) && strpos($event->source, 'section') !== false && strpos($event->source, $section->id) !== false) {
-                    // Loop through the settings fields list associated to the section
-                    foreach ($fields as $fieldHandle) {
-                        // Get the field object
-                        $field = Craft::$app->fields->getFieldByHandle($fieldHandle);
-                        // Get the field class
-                        $type = get_class($field);
-                        if (empty($field)) {
-                            continue;
-                        }
-                        // Add an action  by passing argument to his constructor based on his type
-                        switch ($type) {
-                            case 'craft\fields\Dropdown':
-                                $event->actions[] = new EditDropdown($field->name, $field->handle, $field->options);
-                                break;
-                            case 'craft\fields\RadioButtons':
-                                $event->actions[] = new EditRadioButton($field->name, $field->handle, $field->options);
-                                break;
-                            case 'craft\fields\Categories':
-                                $event->actions[] = new EditCategory($field->name, $field->handle, $field->source);
-                                break;
-                            default:
-                                break;
-                        }
+                if (empty($section)) {
+                    continue;
+                }
+                if (strpos($event->source, 'section') === false) {
+                    continue;
+                }
+
+                $sourceIdUid = explode(':', $event->source);
+                if (sizeof($sourceIdUid) !== 2) {
+                    continue;
+                }
+                $sourceIdUid = $sourceIdUid[1];
+                if ($section->id !== $sourceIdUid && $section->uid !== $sourceIdUid) {
+                    continue;
+                }
+
+                // Loop through the settings fields list associated to the section
+                foreach ($fields as $fieldHandle) {
+                    // Get the field object
+                    $field = Craft::$app->fields->getFieldByHandle($fieldHandle);
+                    // Get the field class
+                    $type = get_class($field);
+
+                    if (empty($field)) {
+                        continue;
+                    }
+                    // Add an action  by passing argument to his constructor based on his type
+                    switch ($type) {
+                        case 'craft\fields\Dropdown':
+                            $event->actions[] = new EditDropdown($field->name, $field->handle, $field->options);
+                            break;
+                        case 'craft\fields\RadioButtons':
+                            $event->actions[] = new EditRadioButton($field->name, $field->handle, $field->options);
+                            break;
+                        case 'craft\fields\Categories':
+                            $event->actions[] = new EditCategory($field->name, $field->handle, $field->source);
+                            break;
+                        default:
+                            break;
                     }
                 }
             }

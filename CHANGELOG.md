@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.0.6 - 2019-04-11
+### Hotfix
+- Update section validation in Element::EVENT_REGISTER_ACTIONS event for id + uid support.
+  - Previous Craft version return section id for $event->source
+    - Current Craft version now return uid for $event->source
+
 ## 1.0.5 - 2018-11-28
 ### Added
 - Update README.md
