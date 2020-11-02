@@ -106,7 +106,7 @@ class EditDropdown extends ElementAction
                 continue;
             }
 
-            $element->{$this->handle}->value = $this->value;
+            $element->setFieldValue($this->handle, $this->value);
 
             if ($elementsService->saveElement($element) === false) {
                 // Validation error
