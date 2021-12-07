@@ -36,7 +36,8 @@ class DefaultController extends Controller
 
     // Public Methods
     // =========================================================================
-    public function init(){
+    public function init()
+    {
         parent::init();
 
         $this->_elementType = Craft::$app->getRequest()->getRequiredParam('elementType');
@@ -45,7 +46,8 @@ class DefaultController extends Controller
         $this->_source = ElementHelper::findSource($this->_elementType, $this->_sourceKey, $this->_context);
     }
 
-    public function actionPerformEditAction(){
+    public function actionPerformEditAction()
+    {
         $this->requirePostRequest();
 
         $requestService = Craft::$app->getRequest();
@@ -59,7 +61,7 @@ class DefaultController extends Controller
             /** @var ElementAction $availableAction */
             foreach ($this->_listOfAvailableAction() as $availableAction) {
                 // Select the action form the handle recieve by the trigger
-                if (isset($availableAction->handle) && $availableAction->handle == $actionHandle ) {
+                if (isset($availableAction->handle) && $availableAction->handle == $actionHandle) {
                     $action = $availableAction;
                     break;
                 }
@@ -94,13 +96,13 @@ class DefaultController extends Controller
         $actionCriteria->positionedAfter = null;
         $actionCriteria->positionedBefore = null;
         $actionCriteria->id = $elementIds;
-        
+        $actionCriteria->draftOf = null;
         $success = $action->performAction($actionCriteria);
         $message = $action->getMessage();
 
         if (!$success) {
             $success = false;
-            $message = $event->message;
+            $message = $message;
         }
 
         // Respond
@@ -121,7 +123,8 @@ class DefaultController extends Controller
     /*
      * Get by source and element type all the actions class registered
      */
-    private function _listOfAvailableAction(){
+    private function _listOfAvailableAction()
+    {
         if (Craft::$app->getRequest()->isMobileBrowser()) {
             return null;
         }
@@ -197,4 +200,3 @@ class DefaultController extends Controller
         return $query;
     }
 }
-

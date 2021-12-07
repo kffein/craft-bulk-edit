@@ -52,7 +52,8 @@ class EditDropdown extends ElementAction
     /*
      * Create a dropdown edit class with the field's info, title, handle and options
      */
-    public function __construct(string $_title, string $_handle, array $_options){
+    public function __construct(string $_title, string $_handle, array $_options)
+    {
         $this->title = $_title;
         $this->handle = $_handle;
         $this->options = $_options;
@@ -84,7 +85,7 @@ class EditDropdown extends ElementAction
      */
     public function getTriggerHtml()
     {
-        return Craft::$app->getView()->renderTemplate('craft-bulk-edit/_components/elementactions/Dropdown/trigger',['label'=>$this->title,'handle'=>$this->handle,'options'=>$this->options]);
+        return Craft::$app->getView()->renderTemplate('craft-bulk-edit/_components/elementactions/Dropdown/trigger', ['label'=>$this->title,'handle'=>$this->handle,'options'=>$this->options]);
     }
     /**
      * Performs the action on any elements that match the given criteria.
@@ -102,12 +103,12 @@ class EditDropdown extends ElementAction
 
         foreach ($elements as $element) {
             // Skip if there's nothing to change
-            if (isset($element->{$this->handle}) && $element->{$this->handle}->value == $this->value ) {
+            if (isset($element->{$this->handle}) && $element->{$this->handle}->value == $this->value) {
                 continue;
             }
 
             $element->{$this->handle}->value = $this->value;
-
+            $element->setFieldValue($this->handle, $this->value);
             if ($elementsService->saveElement($element) === false) {
                 // Validation error
                 $failCount++;
